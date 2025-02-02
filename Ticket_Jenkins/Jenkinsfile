@@ -1,0 +1,23 @@
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        sh 'docker build -t myapp-frontend:latest ./frontend'
+        sh 'docker build -t myapp-backend:latest ./backend'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'docker run myapp-frontend:latest npm test'
+        sh 'docker run myapp-backend:latest ./run-tests.sh'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'kubectl apply -f kubernetes/frontend.yaml'
+        sh 'kubectl apply -f kubernetes/backend.yaml'
+      }
+    }
+  }
+}

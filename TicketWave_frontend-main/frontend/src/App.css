@@ -1,0 +1,31 @@
+:root {
+    --color-gradient-start: #6921B5; 
+    --color-gradient-end: #194AFE; 
+  }
+  
+  body.dark {
+    --color-gradient-start: #194AFE; 
+    --color-gradient-end: #10E3FC; 
+  }
+  
+  :root {
+    --color-approved-light: #6921B5;  
+    --color-rejected-light: #F0E5FC;
+    --color-approved-dark: #194AFE;  
+    --color-rejected-dark: #ffffff;  
+  }
+  
+  body.dark {
+    --color-approved: var(--color-approved-dark);
+    --color-rejected: var(--color-rejected-dark);
+  }
+  
+  body {
+    --color-approved: var(--color-approved-light);
+    --color-rejected: var(--color-rejected-light);
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
